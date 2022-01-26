@@ -19,10 +19,6 @@ function App() {
       id="app-root"
       style={{['--accent-color' as any]: selectedPokemon?.color ?? 'black'}}
     >
-      {/*
-        🐨 make Nav accept a ReactElement prop called "avatar"
-        instead of a User prop called "user"
-      */}
       <Nav avatar={<img src={user.image} alt={`${user.name} profile`} />} />
       <div className="spacer" data-size="lg" />
       {/* 
@@ -35,11 +31,9 @@ function App() {
         setSelectedPokemon={setSelectedPokemon}
       />
       <div className="spacer" data-size="lg" />
-      {/*
-        🐨 make Footer accept a String prop called "footerMessage"
-        instead of the User prop called "user"
-      */}
-      <Footer user={user} />
+      <Footer
+        footerMessage={`Don't have a good day–have a great day, ${user.name}`}
+      />
     </div>
   )
 }
@@ -66,7 +60,6 @@ function Nav({avatar}: {avatar: React.ReactElement}) {
 }
 
 function Main({
-  // 🐨 all these props should be removed in favor of the sidebar and content props
   pokemonList,
   selectedPokemon,
   setSelectedPokemon,
@@ -146,10 +139,10 @@ function Details({selectedPokemon}: {selectedPokemon: PokemonData | null}) {
 }
 
 // 🐨 make this accept a footerMessage string instead of the user
-function Footer({user}: {user: User}) {
+function Footer({footerMessage}: {footerMessage: String}) {
   return (
     <footer>
-      <p>{`Don't have a good day–have a great day, ${user.name}`}</p>
+      <p>{footerMessage}</p>
     </footer>
   )
 }

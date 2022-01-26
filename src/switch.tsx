@@ -11,7 +11,7 @@ import * as React from 'react'
 // this is only a class component so we can do some implementation-detail
 // tests to make sure you're doing things as instructed :)
 class Switch extends React.Component<
-  {on: boolean} & Omit<JSX.IntrinsicElements['button'], 'ref'>,
+  {on: boolean | undefined} & Omit<JSX.IntrinsicElements['button'], 'ref'>,
   {}
 > {
   render() {
